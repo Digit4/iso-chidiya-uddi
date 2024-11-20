@@ -7,6 +7,7 @@ export const usePlaygroundStore = create(
         name: 'playground-store',
         partialize: (state) => ({
             sliderValue: state.sliderValue,
+            chidiyas: state.chidiyas,
         }),
     })
 );
