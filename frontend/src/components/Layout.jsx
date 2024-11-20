@@ -5,6 +5,7 @@ import UsernameForm from './pages/UsernameForm';
 import PageNotFound from './pages/PageNotFound';
 import Playground from './pages/Playground';
 import Game from './pages/game';
+import ChidiyaForm from './ChidiyaForm';
 
 const Layout = () => {
     return (
@@ -15,6 +16,7 @@ const Layout = () => {
             <Route path='/create-new-lobby' element={<UsernameForm />} />
             <Route path='/join-lobby' element={<UsernameForm />} />
             <Route path='/playground' element={<Playground />} />
+            <Route path='/add-chidiya' element={<ChidiyaForm />} />
 
             <Route path='*' element={<PageNotFound />} />
         </Routes>
