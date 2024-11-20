@@ -8,10 +8,15 @@ const ChidiyaForm = () => {
         usePlaygroundStore();
     const handleAddChidiya = async (e) => {
         e.preventDefault();
-        await addChidiya(e.target[0].value);
-        console.log('add', e.target[0].value);
+        const chidiyaData = {
+            name: e.target[0].value,
+            udd: e.target[1].checked,
+        };
+        await addChidiya(chidiyaData);
+        console.log('add', chidiyaData);
         e.target[0].value = '';
         e.target[0].focus();
+        e.target[1].checked = false;
     };
 
     const handleRemoveChidiya = async (e, index) => {
@@ -27,7 +32,9 @@ const ChidiyaForm = () => {
                           itemID={index}
                           className='flex gap-4 justify-center'
                       >
-                          <ChidiyaDisplayBox>{chidiya}</ChidiyaDisplayBox>
+                          <ChidiyaDisplayBox udd={chidiya.udd}>
+                              {chidiya.name}
+                          </ChidiyaDisplayBox>
                           <button
                               onClick={(e) => handleRemoveChidiya(e, index)}
                           >
@@ -36,8 +43,15 @@ const ChidiyaForm = () => {
                       </div>
                   ))
                 : null}
-            <form onSubmit={handleAddChidiya}>
+            <form
+                onSubmit={handleAddChidiya}
+                className='flex flex-col gap-2 justify-center'
+            >
                 <Input type='text' placeholder='Enter Chidiya Name' />
+                <div className='flex flex-col gap-2 text-center'>
+                    <div>Udd</div>
+                    <Input type='checkbox' value={true} className='mt-0' />
+                </div>
                 <Input type='submit' value='Add Chidiya' />
                 <Input
                     type='button'
