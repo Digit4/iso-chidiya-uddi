@@ -7,10 +7,10 @@ const ChidiyaDisplayBox = ({ children, udd }) => {
     }, [udd]);
     return (
         <>
-            {children}
-            <div className='text-center'>
+            <td>{children}</td>
+            <td>
                 <Input type='checkbox' disabled checked={udd} />
-            </div>
+            </td>
         </>
     );
 };
