@@ -64,18 +64,19 @@ const JoinSessionForm = ({ isJoining }) => {
     };
     return (
         <form hidden={!isJoining} onSubmit={verifyCode}>
-            <Input
-                placeholder='Enter Code'
-                className={'placeholder:text-slate-500 ' + inputTextCSS}
-                type='text'
-                onChange={handleCodeInput}
-            />
-            <Input
-                // onClick={verifyLink}
-                className={buttonCSS}
-                type='submit'
-                value='Enter Lobby'
-            />
+            <div className='mt-2 flex justify-center'>
+                <Input
+                    placeholder='Enter Code'
+                    className={'placeholder:text-slate-500 ' + inputTextCSS}
+                    type='text'
+                    onChange={handleCodeInput}
+                />
+                <Input
+                    className={buttonCSS}
+                    type='submit'
+                    value='Enter Lobby'
+                />
+            </div>
         </form>
     );
 };

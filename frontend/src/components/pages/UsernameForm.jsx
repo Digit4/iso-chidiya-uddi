@@ -72,17 +72,15 @@ const UsernameForm = () => {
                         <label htmlFor='username'></label>
                         Display Username
                     </div>
-                    <div className='mt-2 flex justify-center'>
-                        <Input
-                            id='username'
-                            name='username'
-                            autoComplete='username'
-                            placeholder='Enter your username'
-                            className='flex w-min '
-                            type='text'
-                            onChange={handleUpdateUserName}
-                        />
-                    </div>
+                    <Input
+                        id='username'
+                        name='username'
+                        autoComplete='username'
+                        placeholder='Enter your username'
+                        className='flex w-min '
+                        type='text'
+                        onChange={handleUpdateUserName}
+                    />
                     <div className=' mt-4 text-center justify-center'>
                         <Input
                             onClick={submitUserName}

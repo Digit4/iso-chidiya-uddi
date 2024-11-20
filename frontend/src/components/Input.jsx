@@ -15,9 +15,9 @@ const Input = ({ ...inputData }) => {
         className: [inputData.className, baseCSS].join(' '),
     };
     return (
-        <>
-            <input {...inputData} />
-        </>
+        <div className='mt-2 flex justify-center'>
+            <input autoComplete='off' {...inputData} />
+        </div>
     );
 };
 
