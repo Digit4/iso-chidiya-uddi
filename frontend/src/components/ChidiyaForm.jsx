@@ -1,7 +1,7 @@
 import { usePlaygroundStore } from '../store/stores';
 import ChidiyaDisplayBox from './ChidiyaDisplayBox';
 import Input from './Input';
-import PageContainer from './PageContainer';
+import ModalContainer from './ModalContainer';
 
 const ChidiyaForm = () => {
     const { chidiyas, addChidiya, removeChidiya, clearChidiyas } =
@@ -23,19 +23,22 @@ const ChidiyaForm = () => {
         await removeChidiya(index);
     };
     return (
-        <PageContainer>
-            <div className='text-2xl text-center'>Add Chidiya</div>
-            <table className=' mx-80 table-auto'>
-                <thead>
-                    <tr>
+        <ModalContainer title='Add Chidiyas'>
+            <table className='mx-20 justify-center min-h-80 flex flex-col table-auto'>
+                <thead className='max-h-8'>
+                    <tr className='flex flex-row justify-between'>
                         <th>Chidiya Name</th>
                         <th>Udd</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {chidiyas.length !== 0 ? (
                         chidiyas.map((chidiya, index) => (
-                            <tr key={index}>
+                            <tr
+                                className='flex flex-row justify-between'
+                                key={index}
+                            >
                                 <ChidiyaDisplayBox udd={chidiya.udd}>
                                     {chidiya.name}
                                 </ChidiyaDisplayBox>
@@ -57,21 +60,24 @@ const ChidiyaForm = () => {
             </table>
             <form
                 onSubmit={handleAddChidiya}
-                className='flex flex-col gap-4 text-center justify-center'
+                className='flex flex-col gap-4 text-center mb-4 justify-center'
             >
-                <Input type='text' placeholder='Enter Chidiya Name' />
-                <label className='cursor-pointer'>
-                    <div>Udd</div>
-                    <Input type='checkbox' value='' className='mt-0' />
-                </label>
+                <div className='flex flex-row gap-4 justify-center'>
+                    <Input type='text' placeholder='Enter Chidiya Name' />
+                    <label className='cursor-pointer'>
+                        <div>Udd</div>
+                        <Input type='checkbox' value='' className='mt-0' />
+                    </label>
+                </div>
                 <Input type='submit' value='Add Chidiya' />
-                <Input
+                {/* <Input
                     type='button'
                     value='RemoveAll'
                     onClick={clearChidiyas}
-                />
+                /> */}
             </form>
-        </PageContainer>
+            <Input type='button' value='Enter Game' className='mb-4' />
+        </ModalContainer>
     );
 };
 
