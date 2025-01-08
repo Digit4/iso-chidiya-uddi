@@ -7,7 +7,9 @@ const ChidiyaDisplayBox = ({ children, udd }) => {
     }, [udd]);
     return (
         <>
-            <td>{children}</td>
+            <td className='min-w-24 max-w-24 overflow-hidden overflow-ellipsis'>
+                {children}
+            </td>
             <td>
                 <Input type='checkbox' disabled checked={udd} />
             </td>
