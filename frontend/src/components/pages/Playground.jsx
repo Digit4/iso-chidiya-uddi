@@ -11,8 +11,10 @@ import Slider from '../slider';
 import Timer from '../timer';
 import Textbox from '../textbox';
 import PrivateDisplay from '../PrivateDisplay';
+import ChidiyaForm from '../ChidiyaForm';
 
 const Playground = () => {
+    const [cForm, setCForm] = useState(false);
     const { session, setSession } = useSessionStore();
     const { wsURL } = useAPIStore();
     const { client } = useUserStore();
@@ -21,6 +23,18 @@ const Playground = () => {
     const [ws, setWs] = useState(null);
     const [fingers, setFingers] = useState(() => new Map());
     const [myFinger, setMyFinger] = useState(new Map());
+
+    const runGameInitializer = async () => {
+        askUsertoEnterChidiya();
+    };
+
+    const askUsertoEnterChidiya = async () => {
+        setCForm(true);
+    };
+
+    useEffect(() => {
+        runGameInitializer();
+    }, []);
 
     const connectWS = async () => {
         const urlWithParams = `${wsURL}?sessionID=${session.sessionID}&clientID=${client.clientID}`;
@@ -144,6 +158,7 @@ const Playground = () => {
                     ))}
                 </div>{' '}
             </div>
+            {cForm ? <ChidiyaForm /> : null}
             <PrivateDisplay>
                 <div className='text-center'>
                     {session ? session.sessionID : null}
